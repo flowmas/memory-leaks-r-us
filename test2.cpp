@@ -4,9 +4,11 @@
 using namespace std;
 
 class NodeTest2 {
+
   friend ostream &operator<<(ostream &Out, const NodeTest2 &N) {
-    Out << "N<" << N.Value << ", " << (N.Next != nullptr) << ">";
-    return Out;
+
+      Out << "N<" << N.Value << ", " << (N.Next != nullptr) << ">";
+      return Out;
   }
 
 public:
@@ -16,11 +18,14 @@ public:
 
   explicit NodeTest2(int Value = 0, NodeTest2 *Next = nullptr)
       : Value{Value}, Next{Next} {
+
     ++NodeCount;
     cout << "Creating " << *this << ", total created: " << NodeCount << endl;
   }
+
   ~NodeTest2() {
     cout << "Deleting: " << *this;
+    delete Next;
     --NodeCount;
     cout << ", nodes remaining: " << NodeCount << endl;
   }
@@ -100,4 +105,5 @@ void test2() {
   remove(Head, find(Head, 100));
   remove(Head, find(Head, 19));
   displayAll(Head);
+  delete Head;
 }

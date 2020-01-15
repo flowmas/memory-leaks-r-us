@@ -17,6 +17,7 @@ public:
 
   ~StringT3() {
     cout << "Deleting " << MyStrings[0] << MyStrings[1] << MyStrings[2] << endl;
+    delete[] MyStrings;
   }
 };
 
@@ -40,5 +41,6 @@ void test3() {
   V2.push_back(S2ptr);
   V2.push_back(T2ptr);
 
+  delete S2ptr;
   cout << "test3 is done" << endl;
 }

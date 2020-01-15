@@ -5,6 +5,7 @@
 using namespace std;
 
 class NodeTest1 {
+
   friend ostream &operator<<(ostream &Out, const NodeTest1 &N) {
     Out << "N<" << N.Value << ", " << (N.Next != nullptr) << ">";
     return Out;
@@ -20,8 +21,10 @@ public:
     ++NodeCount;
     cout << "Creating " << *this << ", total created: " << NodeCount << endl;
   }
+
   ~NodeTest1() {
     cout << "Deleting: " << *this;
+    delete Next;
     --NodeCount;
     cout << ", nodes remaining: " << NodeCount << endl;
   }
@@ -45,4 +48,11 @@ void test1() {
     auto *Tmp = new NodeTest1(I * I);
     N4Arr[I] = Tmp;
   }
+
+  delete N2Ptr;
+  delete[] N3Arr;
+  for (int I = 6; I < 10; ++I) {
+    delete N4Arr[I];
+  }
+  delete[] N4Arr;
 }
