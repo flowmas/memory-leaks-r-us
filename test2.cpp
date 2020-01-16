@@ -111,5 +111,11 @@ void test2() {
   remove(Head, find(Head, 100));
   remove(Head, find(Head, 19));
   displayAll(Head);
-  delete Head;
+          
+  NodeTest2* CurrPtr = Head;
+  while (CurrPtr->Next != nullptr) {
+    NodeTest2* tmpPtr = CurrPtr->Next;
+    delete CurrPtr;
+    CurrPtr = tmpPtr;
+  }
 }
