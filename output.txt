@@ -1,0 +1,260 @@
+===================================================================
+Recommended Usage: ./simplecompile.sh > output.txt 2>&1
+===================================================================
+Wed Jan 15 21:44:00 PST 2020
+Linux csslab10.uwb.edu 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+uid=1024387(samfwolf) gid=2121024387(samfwolf) groups=2121024387(samfwolf),605559(lab-access) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+===================================================================
+*** compiling with clang++ to create an executable called myprogram
+===================================================================
+clang version 7.0.1 (tags/RELEASE_701/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /opt/rh/llvm-toolset-7.0/root/usr/bin
+===================================================================
+*** running myprogram
+Starting memory-leaks-r-us....
+Creating N<1, 0>, total created: 1
+Creating N<3, 0>, total created: 2
+Creating N<0, 0>, total created: 3
+Creating N<0, 0>, total created: 4
+Creating N<0, 0>, total created: 5
+Creating N<0, 0>, total created: 6
+Creating N<0, 0>, total created: 7
+Creating N<0, 0>, total created: 8
+Creating N<0, 0>, total created: 9
+Creating N<0, 0>, total created: 10
+Creating N<0, 0>, total created: 11
+Creating N<0, 0>, total created: 12
+Creating N<0, 0>, total created: 13
+Deleting: N<0, 0>, nodes remaining: 12
+Creating N<1, 0>, total created: 13
+Deleting: N<1, 0>, nodes remaining: 12
+Creating N<4, 0>, total created: 13
+Deleting: N<4, 0>, nodes remaining: 12
+Creating N<9, 0>, total created: 13
+Deleting: N<9, 0>, nodes remaining: 12
+Creating N<16, 0>, total created: 13
+Deleting: N<16, 0>, nodes remaining: 12
+Creating N<36, 0>, total created: 13
+Creating N<49, 0>, total created: 14
+Creating N<64, 0>, total created: 15
+Creating N<81, 0>, total created: 16
+Deleting: N<3, 0>, nodes remaining: 15
+Deleting: N<0, 0>, nodes remaining: 14
+Deleting: N<0, 0>, nodes remaining: 13
+Deleting: N<0, 0>, nodes remaining: 12
+Deleting: N<0, 0>, nodes remaining: 11
+Deleting: N<0, 0>, nodes remaining: 10
+Deleting: N<16, 0>, nodes remaining: 9
+Deleting: N<9, 0>, nodes remaining: 8
+Deleting: N<4, 0>, nodes remaining: 7
+Deleting: N<1, 0>, nodes remaining: 6
+Deleting: N<0, 0>, nodes remaining: 5
+Deleting: N<36, 0>, nodes remaining: 4
+Deleting: N<49, 0>, nodes remaining: 3
+Deleting: N<64, 0>, nodes remaining: 2
+Deleting: N<81, 0>, nodes remaining: 1
+Deleting: N<1, 0>, nodes remaining: 0
+Creating N<100, 0>, total created: 1
+Creating N<1, 0>, total created: 2
+Creating N<8, 0>, total created: 3
+Creating N<27, 0>, total created: 4
+Creating N<64, 0>, total created: 5
+Creating N<125, 0>, total created: 6
+[N<100, 1>, N<1, 1>, N<8, 1>, N<27, 1>, N<64, 1>, N<125, 0>]
+Creating N<7, 0>, total created: 7
+Creating N<13, 0>, total created: 8
+Creating N<15, 0>, total created: 9
+Creating N<17, 0>, total created: 10
+Creating N<19, 0>, total created: 11
+[N<19, 1>, N<100, 1>, N<1, 1>, N<7, 1>, N<8, 1>, N<27, 1>, N<64, 1>, N<13, 1>, N<125, 1>, N<15, 1>, N<17, 0>]
+Deleting: N<8, 1>, nodes remaining: 10
+Deleting: N<100, 1>, nodes remaining: 9
+Deleting: N<19, 1>, nodes remaining: 8
+[N<1, 1>, N<7, 1>, N<27, 1>, N<64, 1>, N<13, 1>, N<125, 1>, N<15, 1>, N<17, 0>]
+Deleting: N<1, 1>, nodes remaining: 7
+Deleting: N<7, 1>, nodes remaining: 6
+Deleting: N<27, 1>, nodes remaining: 5
+Deleting: N<64, 1>, nodes remaining: 4
+Deleting: N<13, 1>, nodes remaining: 3
+Deleting: N<125, 1>, nodes remaining: 2
+Deleting: N<15, 1>, nodes remaining: 1
+Deleting: N<17, 0>, nodes remaining: 0
+Created abc
+Created wxy
+Deleting abc
+Deleting abc
+Deleting abc
+Deleting wxy
+test3 is done
+Deleting abc
+Deleting abc
+Deleting qbc
+Deleting qbc
+Deleting abc
+Deleting abc
+Successfully completed memory-leaks-r-us....
+===================================================================
+*** running clang-tidy using options from .clang-tidy
+LLVM (http://llvm.org/):
+  LLVM version 7.0.1
+  Optimized build.
+  Default target: x86_64-unknown-linux-gnu
+  Host CPU: broadwell
+===================================================================
+*** running clang-format format formatting suggestions
+*** generating new .clang-format baed on LLVM style
+*** formatting suggestions for ./main.cpp
+*** formatting suggestions for ./test1.cpp
+4d3
+< 
+50c49
+<   
+---
+> 
+*** formatting suggestions for ./test2.cpp
+10,11c10,11
+<       Out << "N<" << N.Value << ", " << (N.Next != nullptr) << ">";
+<       return Out;
+---
+>     Out << "N<" << N.Value << ", " << (N.Next != nullptr) << ">";
+>     return Out;
+73c73
+<     NodeTest2* tmpPtr = Start;
+---
+>     NodeTest2 *tmpPtr = Start;
+109c109
+<           
+---
+> 
+122c122
+<   
+---
+> 
+124c124
+<   NodeTest2* CurrPtr = Head;
+---
+>   NodeTest2 *CurrPtr = Head;
+126c126
+<     NodeTest2* tmpPtr = CurrPtr->Next;
+---
+>     NodeTest2 *tmpPtr = CurrPtr->Next;
+130c130
+<   
+---
+> 
+*** formatting suggestions for ./test3.cpp
+12,14c12
+<   StringT3(const StringT3 &S2) {
+<     copy(S2);
+<   }
+---
+>   StringT3(const StringT3 &S2) { copy(S2); }
+16,19c14,15
+<   void operator=(const StringT3 &S2) {
+<     copy(S2);
+<   }
+<     
+---
+>   void operator=(const StringT3 &S2) { copy(S2); }
+> 
+59c55
+<     
+---
+> 
+===================================================================
+*** running valgrind to detect memory leaks
+*** Examine "definitely lost" 
+===================================================================
+*** compiling with clang++ to checking for memory leaks
+===================================================================
+*** running myprogram with memory checking
+Starting memory-leaks-r-us....
+Creating N<1, 0>, total created: 1
+Creating N<3, 0>, total created: 2
+Creating N<0, 0>, total created: 3
+Creating N<0, 0>, total created: 4
+Creating N<0, 0>, total created: 5
+Creating N<0, 0>, total created: 6
+Creating N<0, 0>, total created: 7
+Creating N<0, 0>, total created: 8
+Creating N<0, 0>, total created: 9
+Creating N<0, 0>, total created: 10
+Creating N<0, 0>, total created: 11
+Creating N<0, 0>, total created: 12
+Creating N<0, 0>, total created: 13
+Deleting: N<0, 0>, nodes remaining: 12
+Creating N<1, 0>, total created: 13
+Deleting: N<1, 0>, nodes remaining: 12
+Creating N<4, 0>, total created: 13
+Deleting: N<4, 0>, nodes remaining: 12
+Creating N<9, 0>, total created: 13
+Deleting: N<9, 0>, nodes remaining: 12
+Creating N<16, 0>, total created: 13
+Deleting: N<16, 0>, nodes remaining: 12
+Creating N<36, 0>, total created: 13
+Creating N<49, 0>, total created: 14
+Creating N<64, 0>, total created: 15
+Creating N<81, 0>, total created: 16
+Deleting: N<3, 0>, nodes remaining: 15
+Deleting: N<0, 0>, nodes remaining: 14
+Deleting: N<0, 0>, nodes remaining: 13
+Deleting: N<0, 0>, nodes remaining: 12
+Deleting: N<0, 0>, nodes remaining: 11
+Deleting: N<0, 0>, nodes remaining: 10
+Deleting: N<16, 0>, nodes remaining: 9
+Deleting: N<9, 0>, nodes remaining: 8
+Deleting: N<4, 0>, nodes remaining: 7
+Deleting: N<1, 0>, nodes remaining: 6
+Deleting: N<0, 0>, nodes remaining: 5
+Deleting: N<36, 0>, nodes remaining: 4
+Deleting: N<49, 0>, nodes remaining: 3
+Deleting: N<64, 0>, nodes remaining: 2
+Deleting: N<81, 0>, nodes remaining: 1
+Deleting: N<1, 0>, nodes remaining: 0
+Creating N<100, 0>, total created: 1
+Creating N<1, 0>, total created: 2
+Creating N<8, 0>, total created: 3
+Creating N<27, 0>, total created: 4
+Creating N<64, 0>, total created: 5
+Creating N<125, 0>, total created: 6
+[N<100, 1>, N<1, 1>, N<8, 1>, N<27, 1>, N<64, 1>, N<125, 0>]
+Creating N<7, 0>, total created: 7
+Creating N<13, 0>, total created: 8
+Creating N<15, 0>, total created: 9
+Creating N<17, 0>, total created: 10
+Creating N<19, 0>, total created: 11
+[N<19, 1>, N<100, 1>, N<1, 1>, N<7, 1>, N<8, 1>, N<27, 1>, N<64, 1>, N<13, 1>, N<125, 1>, N<15, 1>, N<17, 0>]
+Deleting: N<8, 1>, nodes remaining: 10
+Deleting: N<100, 1>, nodes remaining: 9
+Deleting: N<19, 1>, nodes remaining: 8
+[N<1, 1>, N<7, 1>, N<27, 1>, N<64, 1>, N<13, 1>, N<125, 1>, N<15, 1>, N<17, 0>]
+Deleting: N<1, 1>, nodes remaining: 7
+Deleting: N<7, 1>, nodes remaining: 6
+Deleting: N<27, 1>, nodes remaining: 5
+Deleting: N<64, 1>, nodes remaining: 4
+Deleting: N<13, 1>, nodes remaining: 3
+Deleting: N<125, 1>, nodes remaining: 2
+Deleting: N<15, 1>, nodes remaining: 1
+Deleting: N<17, 0>, nodes remaining: 0
+Created abc
+Created wxy
+Deleting abc
+Deleting abc
+Deleting abc
+Deleting wxy
+test3 is done
+Deleting abc
+Deleting abc
+Deleting qbc
+Deleting qbc
+Deleting abc
+Deleting abc
+Successfully completed memory-leaks-r-us....
+===================================================================
+*** cleaning up, deleting myprogram
+===================================================================
+Wed Jan 15 21:44:12 PST 2020
+===================================================================
+Exiting with 0
