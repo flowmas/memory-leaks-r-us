@@ -68,11 +68,20 @@ NodeTest2 *addBefore(NodeTest2 *Start, int ValA, int ValB) {
 
 NodeTest2 *remove(NodeTest2 *Start, NodeTest2 *N) {
   assert(Start != nullptr);
+  if (Start == N) {
+    NodeTest2* tmpPtr = Start;
+    Start = Start->Next;
+    delete tmpPtr;
+    return Start;
+  }
   NodeTest2 *Curr = Start;
   while (Curr != nullptr && Curr->Next != N)
     Curr = Curr->Next;
   if (Curr != nullptr && N != nullptr)
     Curr->Next = N->Next;
+  if (N != nullptr) {
+    delete N;
+  }
   return Start;
 }
 
@@ -95,20 +104,18 @@ void test2() {
   for (int I = 1; I <= 5; ++I) {
     Tail = addAfter(Tail, new NodeTest2(I * I * I));
   }
-          cout << "1st Display" << endl;
+          
   displayAll(Head);
   Head = addBefore(Head, 7, 8);
   Head = addBefore(Head, 13, 125);
   Head = addBefore(Head, 15, 9);
   Head = addBefore(Head, 17, 11);
-
   Head = addBefore(Head, 19, 100);
-          cout << "2nd Display" << endl;
   displayAll(Head);
-  remove(Head, find(Head, 8));
-  remove(Head, find(Head, 77));
-  remove(Head, find(Head, 100));
-  remove(Head, find(Head, 19));
+  Head = remove(Head, find(Head, 8));
+  Head = remove(Head, find(Head, 77));
+  Head = remove(Head, find(Head, 100));
+  Head = remove(Head, find(Head, 19));
   displayAll(Head);
           
   NodeTest2* CurrPtr = Head;
@@ -117,4 +124,6 @@ void test2() {
     delete CurrPtr;
     CurrPtr = tmpPtr;
   }
+
+  delete CurrPtr;
 }
