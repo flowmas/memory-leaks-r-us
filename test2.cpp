@@ -57,6 +57,10 @@ NodeTest2 *addBefore(NodeTest2 *Start, int ValA, int ValB) {
   auto *NodeA = new NodeTest2(ValA);
   NodeA->Next = NodeB;
   NodeTest2 *Curr = Start;
+  // Edge case for Inserting at the head of the list
+  if (NodeB == Start) {
+    return NodeA;
+  }
   while (Curr->Next != NodeB)
     Curr = Curr->Next;
   Curr->Next = NodeA;
@@ -68,7 +72,7 @@ NodeTest2 *remove(NodeTest2 *Start, NodeTest2 *N) {
   NodeTest2 *Curr = Start;
   while (Curr != nullptr && Curr->Next != N)
     Curr = Curr->Next;
-  if (Curr != nullptr)
+  if (Curr != nullptr && N != nullptr)
     Curr->Next = N->Next;
   return Start;
 }
@@ -92,13 +96,15 @@ void test2() {
   for (int I = 1; I <= 5; ++I) {
     Tail = addAfter(Tail, new NodeTest2(I * I * I));
   }
+          cout << "1st Display" << endl;
   displayAll(Head);
-  addBefore(Head, 7, 8);
-  addBefore(Head, 13, 125);
-  addBefore(Head, 15, 9);
-  addBefore(Head, 17, 11);
+  Head = addBefore(Head, 7, 8);
+  Head = addBefore(Head, 13, 125);
+  Head = addBefore(Head, 15, 9);
+  Head = addBefore(Head, 17, 11);
 
-  addBefore(Head, 19, 100);
+  Head = addBefore(Head, 19, 100);
+          cout << "2nd Display" << endl;
   displayAll(Head);
   remove(Head, find(Head, 8));
   remove(Head, find(Head, 77));
