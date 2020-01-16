@@ -25,7 +25,6 @@ public:
 
   ~NodeTest2() {
     cout << "Deleting: " << *this;
-    delete Next;
     --NodeCount;
     cout << ", nodes remaining: " << NodeCount << endl;
   }
