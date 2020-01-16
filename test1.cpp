@@ -24,7 +24,6 @@ public:
 
   ~NodeTest1() {
     cout << "Deleting: " << *this;
-    delete Next;
     --NodeCount;
     cout << ", nodes remaining: " << NodeCount << endl;
   }
@@ -48,7 +47,8 @@ void test1() {
     auto *Tmp = new NodeTest1(I * I);
     N4Arr[I] = Tmp;
   }
-
+  
+  // Delete dynamic allocations
   delete N2Ptr;
   delete[] N3Arr;
   for (int I = 6; I < 10; ++I) {

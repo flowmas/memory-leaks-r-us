@@ -12,7 +12,7 @@ public:
   StringT3(const StringT3 &S2) {
     copy(S2);
   }
-    
+  // Assignment Operator
   void operator=(const StringT3 &S2) {
     copy(S2);
   }
@@ -23,7 +23,7 @@ public:
     MyStrings[2] = C; // NOLINT - not using move
     cout << "Created " << MyStrings[0] << MyStrings[1] << MyStrings[2] << endl;
   }
-    
+  // copy method for Assignment Operator and Copy Constructor
   void copy(const StringT3 &S2) {
     MyStrings[0] = S2.MyStrings[0]; // NOLINT - not using move
     MyStrings[1] = S2.MyStrings[1]; // NOLINT - not using move
@@ -32,6 +32,7 @@ public:
 
   ~StringT3() {
     cout << "Deleting " << MyStrings[0] << MyStrings[1] << MyStrings[2] << endl;
+    // Delete MyStrings
     delete[] MyStrings;
   }
 };
@@ -55,7 +56,8 @@ void test3() {
   vector<StringT3 *> V2;
   V2.push_back(S2ptr);
   V2.push_back(T2ptr);
-
+    
+  // Delete dynamic StringT3
   delete S2ptr;
   cout << "test3 is done" << endl;
 }

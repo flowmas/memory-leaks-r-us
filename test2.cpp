@@ -68,6 +68,7 @@ NodeTest2 *addBefore(NodeTest2 *Start, int ValA, int ValB) {
 
 NodeTest2 *remove(NodeTest2 *Start, NodeTest2 *N) {
   assert(Start != nullptr);
+  // Check for Head and N incase they are the same
   if (Start == N) {
     NodeTest2* tmpPtr = Start;
     Start = Start->Next;
@@ -79,6 +80,7 @@ NodeTest2 *remove(NodeTest2 *Start, NodeTest2 *N) {
     Curr = Curr->Next;
   if (Curr != nullptr && N != nullptr)
     Curr->Next = N->Next;
+  // Delete N if it's not a nullptr
   if (N != nullptr) {
     delete N;
   }
@@ -117,13 +119,15 @@ void test2() {
   Head = remove(Head, find(Head, 100));
   Head = remove(Head, find(Head, 19));
   displayAll(Head);
-          
+  
+  // Added delete for list
   NodeTest2* CurrPtr = Head;
   while (CurrPtr->Next != nullptr) {
     NodeTest2* tmpPtr = CurrPtr->Next;
     delete CurrPtr;
     CurrPtr = tmpPtr;
   }
-
+  
+  // and finally the head
   delete CurrPtr;
 }
